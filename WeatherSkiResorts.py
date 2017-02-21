@@ -14,12 +14,54 @@ import json
 #user_input = input("Hit Enter to get data for ski resorts")
 #while(user_input != "n"):
 
-avon = requests.get('http://api.wunderground.com/api/b19781f781458019/forecast/conditions/q/CO/Denver.json')
+
+avon = requests.get('http://api.wunderground.com/api/b19781f781458019/forecast/conditions/q/CO/Avon.json')
 avon_data = avon.json()
-pprint(avon_data)
-pprint(avon_data["current_observation"])
-pprint(avon_data["current_observation"]["display_location"]["full"])
-print("Getting weather")
+#pprint(avon_data)
+
+city_info = avon_data['current_observation']['display_location']['full']
+print("Ski resort weather information for: {} ".format(city_info))
+for days in range(0,3):
+
+    snow_day = (avon_data["forecast"]["simpleforecast"]["forecastday"][days]['snow_day'])
+    average_wind = (avon_data["forecast"]["simpleforecast"]["forecastday"][days]['avewind']['mph'])
+    fahrenheit_low = (avon_data["forecast"]["simpleforecast"]["forecastday"][days]["low"]["fahrenheit"])
+    fahrenheit_high = (avon_data["forecast"]["simpleforecast"]["forecastday"][days]["high"]["fahrenheit"])
+    weekday = (avon_data["forecast"]["simpleforecast"]["forecastday"][days]["date"]["weekday"])
+    conditions = (avon_data["forecast"]["simpleforecast"]["forecastday"][days]["conditions"])
+
+    print("Day of the week: {}".format(weekday))
+    print("Condition: {}".format(conditions))
+    print("Highest Temperature: {}, Lowest Temperature: {}".format(fahrenheit_high,fahrenheit_low))
+    print("Snow weather information: {}".format(snow_day))
+
+
+
+vail = requests.get('http://api.wunderground.com/api/b19781f781458019/forecast/conditions/q/CO/Vail.json')
+vail_data = vail.json()
+#pprint(avon_data)
+
+city_info = vail_data['current_observation']['display_location']['full']
+print("Ski resort weather information for: {} ".format(city_info))
+for days in range(0,3):
+
+    snow_day = (vail_data["forecast"]["simpleforecast"]["forecastday"][days]['snow_day'])
+    average_wind = (vail_data["forecast"]["simpleforecast"]["forecastday"][days]['avewind']['mph'])
+    fahrenheit_low = (vail_data["forecast"]["simpleforecast"]["forecastday"][days]["low"]["fahrenheit"])
+    fahrenheit_high = (vail_data["forecast"]["simpleforecast"]["forecastday"][days]["high"]["fahrenheit"])
+    weekday = (vail_data["forecast"]["simpleforecast"]["forecastday"][days]["date"]["weekday"])
+    conditions = (vail_data["forecast"]["simpleforecast"]["forecastday"][days]["conditions"])
+
+    print("Day of the week: {}".format(weekday))
+    print("Condition: {}".format(conditions))
+    print("Highest Temperature: {}, Lowest Temperature: {}".format(fahrenheit_high,fahrenheit_low))
+    print("Snow weather information: {}".format(snow_day))
+#    pprint(avon_data["current_observation"])
+#    pprint(avon_data["current_observation"]["display_location"]["full"])
+#    pprint(avon_data["forecast"])
+#    pprint(avon_data["forecast"]["simpleforecast"]["forecastday"][days])
+
+
 #pprint(avon)
 
 
