@@ -2,7 +2,7 @@
 
 **Author:** Devon Soto deso8093@colorado.edu
 
-**WeatherSkiResorts.py: **Using WeatherUnderground's API, this script will get the weather information from various resorts and print out their weather conditions. 
+**WeatherSkiResorts.py:** Using WeatherUnderground's API, this script will get the weather information from various resorts and print out their weather conditions. 
 
 - [x] Download and collect Weather Conditions from various ski resorts 
 - [x] Print out what conditions I want (temp, wind speed, snow , ..etc)  
