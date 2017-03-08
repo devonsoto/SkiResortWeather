@@ -1,5 +1,4 @@
 #Devon Soto
-#02/2016
 
 #Program Description:
     #This script will get the weather information from various resorts and print it out
@@ -8,15 +7,23 @@
     #Ski Resorts to include: Avon, Breck, Vail, Keystone
 
 from requests.exceptions import ConnectionError
+from geopy.geocoders import Nominatim       #get address
+from geopy.distance import vincenty         #get distance
 from pprint import pprint
 import requests
 import json
 
 #TODO: Put a try except for ConnectionError.
 #TODO: Organize into a class or function.
+#TODO: Get distance
 
 
 user_input = input("Hit Enter to get data for ski resorts: ")
+
+#--------------------------------#
+geolocator = Nominatim()
+location = geolocator.geocode("Boulder,CO")
+Boulder_dis = (location.latitude, location.longitude)
 
 #--------------------------------#
 
@@ -28,6 +35,11 @@ avon_data = avon.json()
 
 city_info = avon_data['current_observation']['display_location']['full']
 print("Ski resort weather information for: {} ".format(city_info))
+longitude = avon_data['current_observation']['display_location']['longitude']
+latitude = avon_data['current_observation']['display_location']['latitude']
+avon_dis = (latitude, longitude)
+
+print("distance from boulder to avon in miles is: {distance}".format(distance=vincenty(Boulder_dis,avon_dis).miles))
 for days in range(0,3):
 
     snow_day = (avon_data["forecast"]["simpleforecast"]["forecastday"][days]['snow_day'])
