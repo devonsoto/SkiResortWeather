@@ -18,6 +18,9 @@ import json
 #TODO: Get distance
 
 
+google_api = "AIzaSyDInv_sk-xQUAGJ-c2-OmF261zRW2-3t-M"
+request = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=Seattle&destinations=San+Francisco&key=AIzaSyDInv_sk-xQUAGJ-c2-OmF261zRW2-3t-M"
+
 user_input = input("Hit Enter to get data for ski resorts: ")
 
 #--------------------------------#
